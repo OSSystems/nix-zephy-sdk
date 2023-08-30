@@ -1,0 +1,18 @@
+#!/bin/sh
+
+basedir=$(dirname $0)/..
+
+echo -n "Cloning Zephyr Project repo... "
+rm -rf $basedir/zephyr
+git clone --depth=1 -q https://github.com/zephyrproject-rtos/zephyr $basedir/zephyr
+echo "done"
+
+echo -n "Copying requirement files... "
+rm -rf $basedir/data
+mkdir -p $basedir/data
+cp $basedir/zephyr/scripts/requirements-* $basedir/data
+echo "done"
+
+echo -n "Removing Zephyr Project repo... "
+rm -rf $basedir/zephyr
+echo "done"
